@@ -1,6 +1,6 @@
 <?php
 
-namespace Vikram\Sticpay;
+namespace Vikramwps\Sticpay;
 
 use Illuminate\Support\ServiceProvider;
 

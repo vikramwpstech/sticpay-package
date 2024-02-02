@@ -1,6 +1,6 @@
 <?php
 
-namespace Vikram\Sticpay\Models;
+namespace Vikramwps\Sticpay\Models;
 
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;

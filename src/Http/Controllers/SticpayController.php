@@ -1,6 +1,6 @@
 <?php
 
-namespace Vikram\Sticpay\Http\Controllers;
+namespace Vikramwps\Sticpay\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Carbon\Carbon;
@@ -9,10 +9,10 @@ use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
-use Vikram\Sticpay\Entities\SticpayDeposit;
-use Vikram\Sticpay\Exceptions\SticpayException;
-use Vikram\Sticpay\Lib\SticpayRetCode;
-use Vikram\Sticpay\Models\Sticpay as SticpayModel;
+use Vikramwps\Sticpay\Entities\SticpayDeposit;
+use Vikramwps\Sticpay\Exceptions\SticpayException;
+use Vikramwps\Sticpay\Lib\SticpayRetCode;
+use Vikramwps\Sticpay\Models\Sticpay as SticpayModel;
 
 class SticpayController
 {

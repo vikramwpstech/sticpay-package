@@ -1,6 +1,6 @@
 <?php
 
-namespace Vikram\Sticpay\Exceptions;
+namespace Vikramwps\Sticpay\Exceptions;
 
 use Exception;
 

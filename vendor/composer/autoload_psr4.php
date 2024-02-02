@@ -6,5 +6,5 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Vikram\\Sticpay\\' => array($baseDir . '/src'),
+    'Vikramwps\\Sticpay\\' => array($baseDir . '/src'),
 );

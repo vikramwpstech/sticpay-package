@@ -1,12 +1,12 @@
 <?php
 
 
-namespace Vikram\Sticpay\Entities;
+namespace Vikramwps\Sticpay\Entities;
 
 
 /**
  * Class User
- * @package Vikram\Sticpay\Entities
+ * @package Vikramwps\Sticpay\Entities
  */
 class SticpayWithdraw
 {

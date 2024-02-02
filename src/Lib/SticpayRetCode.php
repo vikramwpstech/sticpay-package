@@ -1,5 +1,5 @@
 <?php
-namespace Vikram\Sticpay\Lib;
+namespace Vikramwps\Sticpay\Lib;
 
 class SticpayRetCode
 {

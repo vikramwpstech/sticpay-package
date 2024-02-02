@@ -1,16 +1,16 @@
 {
-    "name": "vikram/sticpay",
+    "name": "vikramwps/sticpay",
     "description": "STICPAY is a global E-wallet service",
     "type": "library",
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Vikram\\Sticpay\\": "src/"
+            "Vikramwps\\Sticpay\\": "src/"
         }
     },
     "authors": [
         {
-            "name": "Vikram"
+            "name": "Vikramwps"
         }
     ],
     "minimum-stability": "dev",
@@ -18,7 +18,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Vikram\\Sticpay\\SticpayProvider"
+                "Vikramwps\\Sticpay\\SticpayProvider"
             ]
         }
     }

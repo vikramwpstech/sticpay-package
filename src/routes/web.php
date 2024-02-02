@@ -1,6 +1,6 @@
 <?php
 
-use Vikram\Sticpay\Http\Controllers\SticpayController;
+use Vikramwps\Sticpay\Http\Controllers\SticpayController;
 
 Route::group(['prefix' => 'sticpay'], function() {
     Route::get('/', [SticpayController::class, 'index'])->middleware('auth');

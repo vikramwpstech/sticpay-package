@@ -1,11 +1,11 @@
 <?php
 
-namespace Vikram\Sticpay\Exceptions;
+namespace Vikramwps\Sticpay\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
 use Illuminate\Http\JsonResponse;
-use Vikram\Sticpay\Exceptions\SticpayException;
+use Vikramwps\Sticpay\Exceptions\SticpayException;
 
 class Handler extends ExceptionHandler
 {
