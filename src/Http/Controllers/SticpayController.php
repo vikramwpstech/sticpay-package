@@ -8,6 +8,7 @@ use Exception;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 use Vikramwps\Sticpay\Entities\SticpayDeposit;
 use Vikramwps\Sticpay\Exceptions\SticpayException;
@@ -106,9 +107,20 @@ class SticpayController
                     'status' => 2, 
                     'response_json' => $aRes,
                 ]);
+
+                $aTransaction = DB::table($getParameter->product_desc)->find($getParameter->product_code);
+                if($aTransaction){
+                    $aTransaction->update([
+                        'status' => 2, 
+                    ]);
+                }
                 
                 $res = SticpayRetCode::GetError(SticpayRetCode::SP_RET_OK);
 
+                if(!null($getParameter->product_desc)){
+                    return redirect()->to($getParameter->product_desc)->with('message', 'Payment Made Successfully');
+                }
+                
                 return view('sticpay::sticpay.response', compact('aCheck', 'res', 'aStatus'));
 
             }
@@ -116,7 +128,8 @@ class SticpayController
             throw new SticpayException("OOPS, Invalid Attempt!!");
 
         }catch(Exception $exception){
-            return response()->json(['success' => false, 'error' => $exception->getMessage()], 500);
+            return redirect()->to($getParameter->product_desc)->with('error', $exception->getMessage());
+            // return response()->json(['success' => false, 'error' => $exception->getMessage()], 500);
         }
     }
 
@@ -135,8 +148,19 @@ class SticpayController
                     'response_json' => $aRes,
                 ]);
                 
+                $aTransaction = DB::table($getParameter->product_desc)->find($getParameter->product_code);
+                if($aTransaction){
+                    $aTransaction->update([
+                        'status' => 5, 
+                    ]);
+                }
+
                 $res = SticpayRetCode::GetError(SticpayRetCode::SP_RET_USER_CANCELLED);
 
+                if(!null($getParameter->product_desc)){
+                    return redirect()->to($getParameter->product_desc)->with('error', 'Payment Failed Successfully');
+                }
+                
                 return view('sticpay::sticpay.response', compact('aCheck', 'res', 'aStatus'));
 
             }
@@ -144,7 +168,8 @@ class SticpayController
             throw new SticpayException("OOPS, Invalid Attempt!!");
 
         }catch(Exception $exception){
-            return response()->json(['success' => false, 'error' => $exception->getMessage()], 500);
+            return redirect()->to($getParameter->product_desc)->with('error', $exception->getMessage());
+            // return response()->json(['success' => false, 'error' => $exception->getMessage()], 500);
         }
     }
 
@@ -163,7 +188,25 @@ class SticpayController
                     'response_json' => $aRes,
                 ]);
                 
+                $aTransaction = DB::table($getParameter->product_desc)->find($getParameter->product_code);
+                if($aTransaction){
+                    $aTransaction->update([
+                        'status' => 2, 
+                    ]);
+                }
+                
+                $aTransaction = DB::table($getParameter->product_desc)->find($getParameter->product_code);
+                if($aTransaction){
+                    $aTransaction->update([
+                        'status' => 3, 
+                    ]);
+                }
+
                 $res = SticpayRetCode::GetError(SticpayRetCode::SP_RET_USER_CANCELLED);
+
+                if(!null($getParameter->product_desc)){
+                    return redirect()->to($getParameter->product_desc)->with('error', 'Payment Cancelled Successfully');
+                }
 
                 return view('sticpay::sticpay.response', compact('aCheck', 'res', 'aStatus'));
 
@@ -172,7 +215,8 @@ class SticpayController
             throw new SticpayException("OOPS, Invalid Attempt!!");
 
         }catch(Exception $exception){
-            return response()->json(['success' => false, 'error' => $exception->getMessage()], 500);
+            return redirect()->to($getParameter->product_desc)->with('error', $exception->getMessage());
+            // return response()->json(['success' => false, 'error' => $exception->getMessage()], 500);
         }
     }
 
