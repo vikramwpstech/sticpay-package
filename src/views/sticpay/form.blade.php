@@ -15,25 +15,26 @@
     </style>
 </head>
 <body>
+    <div>Loading...</div>
     <div class="container mt-5">
-        <form id="sticPayForm" action="https://pay.sticpay.com/1.1/pay" method="POST">
+        <form id="sticPayForm" action="https://pay.sticpay.com/1.1/pay" method="POST" class="d-none">
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="merchant_email">Merchant Email:</label>
-                        <input class="form-control" type="email" id="merchant_email" name="merchant_email" value="{{$sticpay->getMerchantEmail()}}" required><br>
+                        <input class="form-control" type="hidden" id="merchant_email" name="merchant_email" value="{{$sticpay->getMerchantEmail()}}" required><br>
                     </div>
                 </div>
                 <div class="col-md-4">        
                     <div class="form-group">
                         <label for="order_no">Order Number:</label>
-                        <input class="form-control" type="text" id="order_no" name="order_no" value="{{$sticpay->getOrderNo()}}" required><br>
+                        <input class="form-control" type="hidden" id="order_no" name="order_no" value="{{$sticpay->getOrderNo()}}" required><br>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="order_time">Order Time:</label>
-                        <input class="form-control" type="text" id="order_time" name="order_time" value="{{$sticpay->getOrderTime()}}" required><br>
+                        <input class="form-control" type="hidden" id="order_time" name="order_time" value="{{$sticpay->getOrderTime()}}" required><br>
                     </div>
                 </div>
             </div>
@@ -42,19 +43,19 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="order_amount">Order Amount:</label>
-                        <input class="form-control" type="text" id="order_amount" name="order_amount" value="{{$sticpay->getOrderAmount()}}" required><br>
+                        <input class="form-control" type="hidden" id="order_amount" name="order_amount" value="{{$sticpay->getOrderAmount()}}" required><br>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="order_currency">Order Currency:</label>
-                        <input class="form-control" type="text" id="order_currency" name="order_currency" value="{{$sticpay->getOrderCurrency()}}" required><br>
+                        <input class="form-control" type="hidden" id="order_currency" name="order_currency" value="{{$sticpay->getOrderCurrency()}}" required><br>
                     </div>
                 </div>    
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="sign">Sign:</label>
-                        <input class="form-control" type="text" id="sign" name="sign" value="{{$sticpay->getSign()}}" required><br>
+                        <input class="form-control" type="hidden" id="sign" name="sign" value="{{$sticpay->getSign()}}" required><br>
                     </div>
                 </div>
             </div>
@@ -63,19 +64,19 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="success_url">Success URL:</label>
-                        <input class="form-control" type="url" id="success_url" name="success_url" value="{{$sticpay->getSuccessUrl()}}"><br>
+                        <input class="form-control" type="hidden" id="success_url" name="success_url" value="{{$sticpay->getSuccessUrl()}}"><br>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="failure_url">Failure URL:</label>
-                        <input class="form-control" type="url" id="failure_url" name="failure_url" value="{{$sticpay->getFailureUrl()}}"><br>
+                        <input class="form-control" type="hidden" id="failure_url" name="failure_url" value="{{$sticpay->getFailureUrl()}}"><br>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="callback_url">Callback URL:</label>
-                        <input class="form-control" type="url" id="callback_url" name="callback_url" value="{{$sticpay->getCallbackUrl()}}"><br>
+                        <input class="form-control" type="hidden" id="callback_url" name="callback_url" value="{{$sticpay->getCallbackUrl()}}"><br>
                     </div>
                 </div>
             </div>
@@ -84,20 +85,20 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="referrer_url">Referrer URL:</label>
-                        <input class="form-control" type="url" id="referrer_url" name="referrer_url" value="{{$sticpay->getReferrerUrl()}}"><br>
+                        <input class="form-control" type="hidden" id="referrer_url" name="referrer_url" value="{{$sticpay->getReferrerUrl()}}"><br>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="interface_version">Interface Version:</label>
-                        <input class="form-control" type="text" id="interface_version" name="interface_version" value="{{$sticpay->getInterfaceVersion()}}" required><br>
+                        <input class="form-control" type="hidden" id="interface_version" name="interface_version" value="{{$sticpay->getInterfaceVersion()}}" required><br>
                     </div>
                 </div>
     
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="input_charset">Input Charset:</label>
-                        <input class="form-control" type="text" id="input_charset" name="input_charset" value="{{$sticpay->getInputCharset()}}"><br>
+                        <input class="form-control" type="hidden" id="input_charset" name="input_charset" value="{{$sticpay->getInputCharset()}}"><br>
                     </div>
                 </div>
             </div>
@@ -106,19 +107,19 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="sign_type">Sign Type:</label>
-                        <input class="form-control" type="text" id="sign_type" name="sign_type" value="{{$sticpay->getSignType()}}"><br>
+                        <input class="form-control" type="hidden" id="sign_type" name="sign_type" value="{{$sticpay->getSignType()}}"><br>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="product_code">Product Code:</label>
-                        <input class="form-control" type="text" id="product_code" name="product_code" value="{{$sticpay->getProductCode()}}"><br>
+                        <input class="form-control" type="hidden" id="product_code" name="product_code" value="{{$sticpay->getProductCode()}}"><br>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="product_name">Product Name:</label>
-                        <input class="form-control" type="text" id="product_name" name="product_name" value="{{$sticpay->getProductName()}}"><br>
+                        <input class="form-control" type="hidden" id="product_name" name="product_name" value="{{$sticpay->getProductName()}}"><br>
                     </div>
                 </div>
             </div>
@@ -127,20 +128,20 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="product_quantity">Product Quantity:</label>
-                        <input class="form-control" type="number" id="product_quantity" name="product_quantity" value="{{$sticpay->getProductQuantity()}}"><br>
+                        <input class="form-control" type="hidden" id="product_quantity" name="product_quantity" value="{{$sticpay->getProductQuantity()}}"><br>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="product_desc">Product Description:</label>
-                        <textarea class="form-control" id="product_desc" name="product_desc">{{$sticpay->getProductDesc()}}</textarea><br>
+                        <textarea class="form-control" style="display:none;" id="product_desc" name="product_desc">{{$sticpay->getProductDesc()}}</textarea><br>
                     </div>
                 </div>
     
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="client_ip">Client IP:</label>
-                        <input class="form-control" type="text" id="client_ip" name="client_ip" value="{{$sticpay->getClientIp()}}"><br>
+                        <input class="form-control" type="hidden" id="client_ip" name="client_ip" value="{{$sticpay->getClientIp()}}"><br>
                     </div>
                 </div>
             </div>
@@ -149,13 +150,13 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="full_name">Full Name:</label>
-                        <input class="form-control" type="text" id="full_name" name="full_name" value="{{$sticpay->getFullName()}}"><br>
+                        <input class="form-control" type="hidden" id="full_name" name="full_name" value="{{$sticpay->getFullName()}}"><br>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="extra_return_param">Extra Return Parameter:</label>
-                        <input class="form-control" type="text" id="extra_return_param" name="extra_return_param" value="{{$sticpay->getExtraReturnParam()}}"><br>
+                        <input class="form-control" type="hidden" id="extra_return_param" name="extra_return_param" value="{{$sticpay->getExtraReturnParam()}}"><br>
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -169,8 +170,13 @@
             <input type="submit" class="btn btn-primary" value="Submit">
         </form>
     </div>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
     <script>
-        $('#sticPayForm').submit();
+        $(document).ready(function(e) {
+            setTimeout(function() {
+                $('#sticPayForm').submit();
+            }, 1000);
+        });
     </script>
 </body>
 </html>
