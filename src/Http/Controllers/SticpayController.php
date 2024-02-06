@@ -19,18 +19,8 @@ class SticpayController
     public function deposit($sticpay)
     {
         try{
-            $sticpay->setInputCharset("UTF-8");
-            $sticpay->setKey(config("sticpay.STICPAY_KEY"));
-            $sticpay->setMerchantEmail(config("sticpay.STICPAY_MERCHANT_EMAIL"));
-            $sticpay->setInterfaceVersion(config("sticpay.STICPAY_INTERFACE_VERSION"));
-            $sticpay->setSignType(config("sticpay.STICPAY_SIGN_TYPE"));
-            $sticpay->setClientIp($_SERVER['REMOTE_ADDR'] ? $_SERVER['REMOTE_ADDR'] : request()->ip());
-            $sign = "merchant_email=".$sticpay->getMerchantEmail()."&order_no=".$sticpay->getOrderNo()."&order_time=".$sticpay->getOrderTime()."&order_amount=".$sticpay->getOrderAmount()."&order_currency=".$sticpay->getOrderCurrency()."&key=".$sticpay->getKey();
             
-            $sticpay->setSuccessUrl("http://localhost:8000/sticpay/success");
-            $sticpay->setFailureUrl("http://localhost:8000/sticpay/failed");
-            $sticpay->setCallbackUrl("http://localhost:8000/sticpay/payment_callback");
-            $sticpay->setReferrerUrl("http://localhost:8000/sticpay/referrer");
+            $sign = "merchant_email=".$sticpay->getMerchantEmail()."&order_no=".$sticpay->getOrderNo()."&order_time=".$sticpay->getOrderTime()."&order_amount=".$sticpay->getOrderAmount()."&order_currency=".$sticpay->getOrderCurrency()."&key=".$sticpay->getKey();
 
             $sticpay->setSign(MD5($sign));
             if($sticpay->getSignType() === 'SHA256'){
@@ -194,11 +184,7 @@ class SticpayController
 
     public static function withdraw($sticpay)
     {
-        // try{            
-            $sticpay->setKey(config("sticpay.STICPAY_KEY"));
-            $sticpay->setMerchantEmail(config("sticpay.STICPAY_MERCHANT_EMAIL"));
-            $sticpay->setInterfaceVersion(config("sticpay.STICPAY_INTERFACE_VERSION"));
-            $sticpay->setSignType(config("sticpay.STICPAY_SIGN_TYPE"));
+        try{
             
             $sign = "merchant=".$sticpay->getMerchantEmail()."&customer=".$sticpay->getCustomerEmail()."&amount=".$sticpay->getAmount()."&currency_code=".$sticpay->getCurrencyCode()."&order_id=".$sticpay->getOrderId()."&interface_version=".$sticpay->getInterfaceVersion()."&key=".$sticpay->getKey();
 
@@ -273,9 +259,9 @@ class SticpayController
             
             throw new SticpayException("OOPS, Integrity constraint violation 1062 Duplicate entry '".$sticpay->getOrderNo()."'");
             
-        // }catch(Exception $exception){
-        //     throw $exception;
-        // }
+        }catch(Exception $exception){
+            throw $exception;
+        }
     }
 
     public static function processView(View $view)
