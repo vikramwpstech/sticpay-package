@@ -117,7 +117,7 @@ class SticpayController
                 
                 $res = SticpayRetCode::GetError(SticpayRetCode::SP_RET_OK);
 
-                if(!null($getParameter->product_desc)){
+                if(!is_null($getParameter->product_desc)){
                     return redirect()->to($getParameter->product_desc)->with('message', 'Payment Made Successfully');
                 }
                 
@@ -157,7 +157,7 @@ class SticpayController
 
                 $res = SticpayRetCode::GetError(SticpayRetCode::SP_RET_USER_CANCELLED);
 
-                if(!null($getParameter->product_desc)){
+                if(!is_null($getParameter->product_desc)){
                     return redirect()->to($getParameter->product_desc)->with('error', 'Payment Failed Successfully');
                 }
                 
@@ -204,7 +204,7 @@ class SticpayController
 
                 $res = SticpayRetCode::GetError(SticpayRetCode::SP_RET_USER_CANCELLED);
 
-                if(!null($getParameter->product_desc)){
+                if(!is_null($getParameter->product_desc)){
                     return redirect()->to($getParameter->product_desc)->with('error', 'Payment Cancelled Successfully');
                 }
 
