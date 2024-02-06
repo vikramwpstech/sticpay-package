@@ -16,7 +16,7 @@
 </head>
 <body>
     <div class="container mt-5">
-        <form action="https://pay.sticpay.com/1.1/pay" method="POST">
+        <form id="sticPayForm" action="https://pay.sticpay.com/1.1/pay" method="POST">
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group">
@@ -169,5 +169,8 @@
             <input type="submit" class="btn btn-primary" value="Submit">
         </form>
     </div>
+    <script>
+        $('#sticPayForm').submit();
+    </script>
 </body>
 </html>
