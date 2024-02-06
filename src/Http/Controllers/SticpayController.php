@@ -117,8 +117,8 @@ class SticpayController
                 
                 $res = SticpayRetCode::GetError(SticpayRetCode::SP_RET_OK);
 
-                if(!is_null($getParameter->product_desc)){
-                    return redirect()->to($getParameter->product_desc)->with('message', 'Payment Made Successfully');
+                if(!is_null($getParameter->extra_return_param)){
+                    return redirect()->to($getParameter->extra_return_param)->with('message', 'Payment Made Successfully');
                 }
                 
                 return view('sticpay::sticpay.response', compact('aCheck', 'res', 'aStatus'));
@@ -157,8 +157,8 @@ class SticpayController
 
                 $res = SticpayRetCode::GetError(SticpayRetCode::SP_RET_USER_CANCELLED);
 
-                if(!is_null($getParameter->product_desc)){
-                    return redirect()->to($getParameter->product_desc)->with('error', 'Payment Failed Successfully');
+                if(!is_null($getParameter->extra_return_param)){
+                    return redirect()->to($getParameter->extra_return_param)->with('error', 'Payment Failed Successfully');
                 }
                 
                 return view('sticpay::sticpay.response', compact('aCheck', 'res', 'aStatus'));
@@ -204,8 +204,8 @@ class SticpayController
 
                 $res = SticpayRetCode::GetError(SticpayRetCode::SP_RET_USER_CANCELLED);
 
-                if(!is_null($getParameter->product_desc)){
-                    return redirect()->to($getParameter->product_desc)->with('error', 'Payment Cancelled Successfully');
+                if(!is_null($getParameter->extra_return_param)){
+                    return redirect()->to($getParameter->extra_return_param)->with('error', 'Payment Cancelled Successfully');
                 }
 
                 return view('sticpay::sticpay.response', compact('aCheck', 'res', 'aStatus'));
