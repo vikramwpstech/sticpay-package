@@ -108,8 +108,8 @@ class SticpayController
                     'response_json' => $aRes,
                 ]);
 
-                $aTransaction = DB::table($getParameter->product_desc)->find($getParameter->product_code);
-                if($aTransaction){
+                $aTransaction = DB::table($getParameter->product_desc)->where('id', $getParameter->product_code);
+                if($aTransaction->exists()){
                     $aTransaction->update([
                         'status' => 2, 
                     ]);
@@ -148,8 +148,8 @@ class SticpayController
                     'response_json' => $aRes,
                 ]);
                 
-                $aTransaction = DB::table($getParameter->product_desc)->find($getParameter->product_code);
-                if($aTransaction){
+                $aTransaction = DB::table($getParameter->product_desc)->where('id', $getParameter->product_code);
+                if($aTransaction->exists()){
                     $aTransaction->update([
                         'status' => 5, 
                     ]);
@@ -188,8 +188,8 @@ class SticpayController
                     'response_json' => $aRes,
                 ]);
                 
-                $aTransaction = DB::table($getParameter->product_desc)->find($getParameter->product_code);
-                if($aTransaction){
+                $aTransaction = DB::table($getParameter->product_desc)->where('id', $getParameter->product_code);
+                if($aTransaction->exists()){
                     $aTransaction->update([
                         'status' => 2, 
                     ]);
