@@ -184,13 +184,6 @@ class SticpayController
                 $aTransaction = DB::table($getParameter->product_desc)->where('id', $getParameter->product_code);
                 if($aTransaction->exists()){
                     $aTransaction->update([
-                        'status' => 2, 
-                    ]);
-                }
-                
-                $aTransaction = DB::table($getParameter->product_desc)->find($getParameter->product_code);
-                if($aTransaction){
-                    $aTransaction->update([
                         'status' => 3, 
                     ]);
                 }
