@@ -52,7 +52,6 @@ class SticpayController
                     'merchant_email '=> $sticpay->getMerchantEmail(),
                     'input_charset '=> $sticpay->getInputCharset(),
                     'sign_type '=> $sticpay->getSignType(),
-                    'product_code '=> $sticpay->getProductCode(),
                     'product_name '=> $sticpay->getProductName(),
                     'product_quantity '=> $sticpay->getProductQuantity(),
                     'product_desc '=> $sticpay->getProductDesc(),
