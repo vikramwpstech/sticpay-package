@@ -17,7 +17,7 @@ class CreateSticpaysTable extends Migration
             $table->id();
             $table->bigInteger('type')->nullable()->comment("0 => Deposit, 1 => Withdraw, 2 => Refund");
             $table->bigInteger('client_id')->nullable();
-            $table->string('txn_id')->unique()->nullable();
+            $table->bigInteger('txn_id')->unique()->nullable();
             $table->decimal('amount')->nullable();
             $table->string('payment_currency')->nullable();
             $table->string('ip_address', 255)->nullable();
