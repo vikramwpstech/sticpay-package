@@ -13,6 +13,7 @@ class Sticpay extends Model
     protected $fillable = [
         'type',
         'client_id',
+        'product_code',
         'txn_id',
         'amount',
         'payment_currency',
