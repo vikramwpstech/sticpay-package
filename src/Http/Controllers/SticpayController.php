@@ -107,13 +107,6 @@ class SticpayController
                     'status' => 2, 
                     'response_json' => $aRes,
                 ]);
-
-                $aTransaction = DB::table($getParameter->product_desc)->where('id', $getParameter->product_code);
-                if($aTransaction->exists()){
-                    $aTransaction->update([
-                        'status' => 2, 
-                    ]);
-                }
                 
                 $res = SticpayRetCode::GetError(SticpayRetCode::SP_RET_OK);
 
@@ -253,6 +246,7 @@ class SticpayController
                 throw new SticpayException("Currency Code is required");
             }
             
+            dd($sticpay);
             $product_info = [
                 'merchant_email '=> $sticpay->getMerchantEmail(),
                 'customer_email '=> $sticpay->getCustomerEmail(),
