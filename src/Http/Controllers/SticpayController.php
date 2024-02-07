@@ -61,11 +61,12 @@ class SticpayController
                 ];
 
             $product_info_json = json_encode($product_info);
-            $aRow = SticpayModel::where("txn_id", $sticpay->getOrderNo())->doesntExist();
+            $aRow = SticpayModel::where("product_code", $sticpay->getProductCode())->doesntExist();
             if($aRow){
                 $aData = [
                     'type'=> 0,
                     'client_id' => Auth::user()->client_id,
+                    'product_code' => $sticpay->getProductCode(),
                     'txn_id' => $sticpay->getOrderNo(),
                     'amount' => $sticpay->getOrderAmount(),
                     'payment_currency' => $sticpay->getOrderCurrency(),
