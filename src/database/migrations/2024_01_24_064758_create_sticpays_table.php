@@ -24,7 +24,7 @@ class CreateSticpaysTable extends Migration
             $table->string('interface_version')->nullable();
             $table->text('product_info_json')->nullable();
             $table->text('response_json')->nullable();
-            $table->text('status')->default(0)->comment("0 => Pending, 1 => Processing, 2 => Success, 3 => Failed, 4 => Cancelled");
+            $table->integer('status')->default(0)->comment("0 => Pending, 1 => Processing, 2 => Success, 3 => Failed, 4 => Cancelled");
             $table->timestamps();
         });
     }
