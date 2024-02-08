@@ -20,8 +20,9 @@ class SticpayWithdraw
 	protected $sign_type;
 	protected $sign;
     protected $product_code;
-
-	public function __constructor($key, $merchant_email, $customer_email, $amount, $currency_code, $order_id, $interface_version, $sign_type, $sign, $product_code) {
+    protected $client_id;
+	
+	public function __constructor($key, $merchant_email, $customer_email, $amount, $currency_code, $order_id, $interface_version, $sign_type, $sign, $product_code, $client_id) {
 
 		$this->key = $key;
 		$this->merchant_email = $merchant_email;
@@ -33,6 +34,7 @@ class SticpayWithdraw
 		$this->sign_type = $sign_type;
 		$this->sign = $sign;
 		$this->product_code = $product_code;
+		$this->client_id = $client_id;
 	}
 
 	public function getKey() {
@@ -113,6 +115,14 @@ class SticpayWithdraw
 
 	public function setProductCode($value) {
 		$this->product_code = $value;
+	}
+
+	public function getClientId() {
+		return $this->client_id;
+	}
+
+	public function setClientId($value) {
+		$this->client_id = $value;
 	}
 
 	public function jsonSerialize()

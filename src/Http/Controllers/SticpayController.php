@@ -251,7 +251,7 @@ class SticpayController
             if($aRow){
                 $aData = [
                     'type'=> 1,
-                    'client_id' => Auth::user()->client_id,
+                    'client_id' => $sticpay->getClientId(),
                     'product_code' => $sticpay->getProductCode(),
                     'txn_id' => $sticpay->getOrderId(),
                     'amount' => $sticpay->getAmount(),
