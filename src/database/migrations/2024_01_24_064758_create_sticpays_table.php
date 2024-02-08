@@ -27,6 +27,7 @@ class CreateSticpaysTable extends Migration
             $table->integer('status')->default(0)->comment("0 => Pending, 1 => Processing, 2 => Success, 3 => Failed, 4 => Cancelled");
             $table->timestamps();
         });
+        
     }
 
     /**
