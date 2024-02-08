@@ -208,7 +208,6 @@ class SticpayController
 
     public static function payment_callback(Request $request)
     {
-        //sticpay table update
         dd($request->all());
     }
 
