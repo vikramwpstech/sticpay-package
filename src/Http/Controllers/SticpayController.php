@@ -239,7 +239,6 @@ class SticpayController
                 throw new SticpayException("Currency Code is required");
             }
             
-            dd($sticpay);
             $product_info = [
                 'merchant_email '=> $sticpay->getMerchantEmail(),
                 'customer_email '=> $sticpay->getCustomerEmail(),
@@ -253,6 +252,7 @@ class SticpayController
                 $aData = [
                     'type'=> 1,
                     'client_id' => Auth::user()->client_id,
+                    'product_code' => $sticpay->getProductCode(),
                     'txn_id' => $sticpay->getOrderId(),
                     'amount' => $sticpay->getAmount(),
                     'payment_currency' => $sticpay->getCurrencyCode(),
