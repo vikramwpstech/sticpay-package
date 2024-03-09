@@ -208,7 +208,8 @@ class SticpayController
 
     public static function payment_callback(Request $request)
     {
-        dd($request->all());
+        abort(404);
+        // dd($request->all());
     }
 
     public static function withdraw($sticpay)
@@ -251,7 +252,7 @@ class SticpayController
                 $aData = [
                     'type'=> 1,
                     'client_id' => $sticpay->getClientId(),
-                    'product_code' => $sticpay->getProductCode(),
+                    // 'product_code' => $sticpay->getProductCode(),
                     'txn_id' => $sticpay->getOrderId(),
                     'amount' => $sticpay->getAmount(),
                     'payment_currency' => $sticpay->getCurrencyCode(),
@@ -268,16 +269,33 @@ class SticpayController
                     $params = $sticpay->jsonSerialize();
                     $url = 'https://api.sticpay.com/rest_withdraw/withdraw';
 
-                    $client = new Client();
+					$body = json_encode($params);
+					
+					$curl = curl_init();
 
-                    $response = $client->post($url, ['form_params' => $params]);
-                    $data = $response->getBody()->getContents();
-                    $responseData = json_decode($data, true);
+					curl_setopt_array($curl, array(
+					  CURLOPT_URL => 'https://api.sticpay.com/rest_withdraw/withdraw',
+					  CURLOPT_RETURNTRANSFER => true,
+					  CURLOPT_ENCODING => '',
+					  CURLOPT_MAXREDIRS => 10,
+					  CURLOPT_TIMEOUT => 0,
+					  CURLOPT_FOLLOWLOCATION => true,
+					  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+					  CURLOPT_CUSTOMREQUEST => 'POST',
+					  CURLOPT_POSTFIELDS => $body,
+					  CURLOPT_HTTPHEADER => array('Content-Type: application/json'),
+					));
 
+					$responseData = curl_exec($curl);
+					
+					$responseData = json_decode($responseData, true);
+					
+					curl_close($curl);
+					
                     if($responseData){
                         $res->update([
                             'status' => (($responseData["success"] == true) ? 2 : 4), 
-                            'response_json' => $data,
+                            'response_json' => json_encode($responseData),
                         ]);
                     }
 
