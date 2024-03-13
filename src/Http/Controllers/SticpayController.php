@@ -85,7 +85,7 @@ class SticpayController
                 throw new SticpayException("OOPS, Something went wrong!!");
             }
             
-            throw new SticpayException("OOPS, Integrity constraint violation 1062 Duplicate entry '".$sticpay->getOrderNo()."'");
+            throw new SticpayException("OOPS, Integrity constraint violation 1062 Duplicate entry for this txn id.");
             
         }catch(Exception $exception){
             return response()->json(['success' => false, 'error' => $exception->getMessage()], 500);
